@@ -14,21 +14,19 @@ class MyHomePage extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-             Text(
-              '${ref.watch(number)}',
-            ),
+            Text('${ref.watch(counterModelProvider).counter}'),
             ElevatedButton.icon(
               onPressed: () {
-                ref.watch(number.notifier).state++;
+                ref.read(counterModelProvider.notifier).increment();
               },
               label: const Icon(Icons.add),
             ),
-                ElevatedButton.icon(
+            ElevatedButton.icon(
               onPressed: () {
-                ref.watch(number.notifier).state--;
+                ref.read(counterModelProvider.notifier).decrement();
               },
               label: const Icon(Icons.remove),
-            )
+            ),
           ],
         ),
       ),
